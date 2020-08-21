@@ -10,7 +10,6 @@ import {
   getRange,
 } from './helpers';
 
-const SQUARE_SIZE = this.props.squareSize;
 const MONTH_LABEL_GUTTER_SIZE = 4;
 const CSS_PSEDUO_NAMESPACE = 'react-calendar-heatmap-';
 
@@ -29,7 +28,7 @@ class CalendarHeatmap extends React.Component {
   }
 
   getSquareSizeWithGutter() {
-    return SQUARE_SIZE + this.props.gutterSize;
+    return this.props.squareSize + this.props.gutterSize;
   }
 
   getMonthLabelSize() {
@@ -37,9 +36,9 @@ class CalendarHeatmap extends React.Component {
       return 0;
     }
     if (this.props.horizontal) {
-      return SQUARE_SIZE + MONTH_LABEL_GUTTER_SIZE;
+      return this.props.squareSize + MONTH_LABEL_GUTTER_SIZE;
     }
-    return 2 * (SQUARE_SIZE + MONTH_LABEL_GUTTER_SIZE);
+    return 2 * (this.props.squareSize + MONTH_LABEL_GUTTER_SIZE);
   }
 
   getWeekdayLabelSize() {
@@ -49,7 +48,7 @@ class CalendarHeatmap extends React.Component {
     if (this.props.horizontal) {
       return 30;
     }
-    return SQUARE_SIZE * 1.5;
+    return this.props.squareSize * 1.5;
   }
 
   getStartDate() {
@@ -158,7 +157,7 @@ class CalendarHeatmap extends React.Component {
 
   getTransformForWeekdayLabels() {
     if (this.props.horizontal) {
-      return `translate(${SQUARE_SIZE}, ${this.getMonthLabelSize()})`;
+      return `translate(${this.props.squareSize}, ${this.getMonthLabelSize()})`;
     }
     return null;
   }
@@ -194,9 +193,9 @@ class CalendarHeatmap extends React.Component {
 
   getWeekdayLabelCoordinates(dayIndex) {
     if (this.props.horizontal) {
-      return [0, (dayIndex + 1) * SQUARE_SIZE + dayIndex * this.props.gutterSize];
+      return [0, (dayIndex + 1) * this.props.squareSize + dayIndex * this.props.gutterSize];
     }
-    return [dayIndex * SQUARE_SIZE + dayIndex * this.props.gutterSize, SQUARE_SIZE];
+    return [dayIndex * this.props.squareSize + dayIndex * this.props.gutterSize, this.props.squareSize];
   }
 
   getMonthLabelCoordinates(weekIndex) {
@@ -241,8 +240,8 @@ class CalendarHeatmap extends React.Component {
       // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
       <rect
         key={index}
-        width={SQUARE_SIZE}
-        height={SQUARE_SIZE}
+        width={this.props.squareSize}
+        height={this.props.squareSize}
         x={x}
         y={y}
         className={this.getClassNameForIndex(index)}
