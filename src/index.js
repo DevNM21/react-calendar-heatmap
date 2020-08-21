@@ -10,7 +10,7 @@ import {
   getRange,
 } from './helpers';
 
-const SQUARE_SIZE = 10;
+const SQUARE_SIZE = this.props.squareSize;
 const MONTH_LABEL_GUTTER_SIZE = 4;
 const CSS_PSEDUO_NAMESPACE = 'react-calendar-heatmap-';
 
@@ -348,6 +348,7 @@ CalendarHeatmap.propTypes = {
   numDays: PropTypes.number, // number of days back from endDate to show
   startDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date)]), // start of date range
   endDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date)]), // end of date range
+  squareSize: PropTypes.number, // size of the square
   gutterSize: PropTypes.number, // size of space between squares
   horizontal: PropTypes.bool, // whether to orient horizontally or vertically
   showMonthLabels: PropTypes.bool, // whether to show month labels
@@ -369,6 +370,7 @@ CalendarHeatmap.defaultProps = {
   startDate: dateNDaysAgo(200),
   endDate: new Date(),
   gutterSize: 1,
+  squareSize: 10,
   horizontal: true,
   showMonthLabels: true,
   showWeekdayLabels: false,
