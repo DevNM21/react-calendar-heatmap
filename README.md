@@ -58,6 +58,7 @@ To show a basic heatmap from January 1st to April 1st:
 | `showWeekdayLabels` | Boolean | Toggle for removing weekday labels. |
 | `showOutOfRangeDays` | Boolean | Toggle display of extra days in week that are past endDate and before beginning of range. |
 | `horizontal` | Boolean | Whether to orient horizontally or vertically. Can be used in combination with numDays/endDate to show just the current month. |
+| `squareSize` | Number | Size of the squares. |
 | `gutterSize` | Number | Size of gutters relative to squares. |
 | `onClick` | Function | Callback to invoke when a square is clicked, e.g. `(value) => alert(value)` |
 | `onMouseOver` | Function | Callback to invoke when mouse pointer is over a square, e.g. `(event, value) => console.log(event, value)` |
